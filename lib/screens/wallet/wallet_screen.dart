@@ -61,13 +61,17 @@ class _WalletScreenState extends State<WalletScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+
+                      // Saldo
+                      SizedBox(height: 8),
                       Text(
                         'Saldo',
-                        style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                       SizedBox(height: 8),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Image.asset('assets/solana.png', width: 64.0, height: 64.0,),
                           Text(
@@ -77,6 +81,7 @@ class _WalletScreenState extends State<WalletScreen> {
                         ],
                       ),
 
+                      // Button kirim dan terima
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Membagi tombol secara merata
                         children: [
@@ -89,7 +94,7 @@ class _WalletScreenState extends State<WalletScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100), // Sudut bulat
                               ),
-                              minimumSize: Size(100, 50), // Ukuran minimal (lebar x tinggi)
+                              minimumSize: Size(100, 64), // Ukuran minimal (lebar x tinggi)
                               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Padding tombol
                             ),
                             child: Text(
@@ -106,7 +111,7 @@ class _WalletScreenState extends State<WalletScreen> {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(100), // Sudut bulat
                               ),
-                              minimumSize: Size(100, 50), // Ukuran minimal (lebar x tinggi)
+                              minimumSize: Size(100, 64), // Ukuran minimal (lebar x tinggi)
                               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Padding tombol
                             ),
                             child: Text(
@@ -117,45 +122,39 @@ class _WalletScreenState extends State<WalletScreen> {
                         ],
                       ),
 
-
-
-
-                      SizedBox(height: 8),
-                      Row(
+                      // Pemilik dan Addres
+                      SizedBox(height: 44),
+                      Column(
                         children: [
                           Text(
-                            'Hallo! ',
+                            'Pemilik',
                             style: TextStyle(fontSize: 16, color: Colors.white),
                           ),
                           Text(
                             userProfile!['name'],
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                            style: TextStyle(fontSize: 32, color: Colors.white),
                           ),
-                          Text(
-                            ', mau belajar apa hari ini?',
-                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          SizedBox(height: 8),
+                          ElevatedButton(
+                            onPressed: () {
+                              // Fungsi untuk tombol Terima
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF000080), // Warna tombol Terima
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100), // Sudut bulat
+                              ),
+                              minimumSize: Size(100, 50), // Ukuran minimal (lebar x tinggi)
+                              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Padding tombol
+                            ),
+                            child: Text(
+                              'Copy Alamat Dompet',
+                              style: TextStyle(color: Colors.white), // Teks putih
+                            ),
                           ),
                         ],
                       ),
-
-                      SizedBox(height: 8),
-                      Divider(
-                        color: Colors.white.withOpacity(0.15), // Warna putih dengan 15% opacity
-                        thickness: 1, // Ketebalan border (1px)
-                        height: 1, // Menghilangkan ruang vertikal tambahan
-                      ),
-                      SizedBox(height: 8),
-                      Text(
-                        userProfile!['email'],
-                        style: TextStyle(fontSize: 16, color: Colors.white),
-                      ),
-                      SizedBox(height: 8),
-                      Divider(
-                        color: Colors.white.withOpacity(0.15), // Warna putih dengan 15% opacity
-                        thickness: 1, // Ketebalan border (1px)
-                        height: 1, // Menghilangkan ruang vertikal tambahan
-                      ),
-                      SizedBox(height: 8),
+ 
                     ],
                   ),
                 ),

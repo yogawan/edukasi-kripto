@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text(
-          'Aset Masa Depan',
+          'Edukasi Crypto',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.transparent,
@@ -66,19 +66,19 @@ class _HomeScreenState extends State<HomeScreen> {
             tabs: [
               GButton(
                 icon: Icons.book,
-                text: 'Courses',
+                text: 'Kursus',
               ),
               GButton(
                 icon: Icons.account_balance_wallet,
-                text: 'Wallet',
+                text: 'Dompet',
               ),
               GButton(
                 icon: Icons.attach_money,
-                text: 'Coin',
+                text: 'Koin',
               ),
               GButton(
                 icon: Icons.newspaper,
-                text: 'News',
+                text: 'Berita',
               ),
             ],
           ),
