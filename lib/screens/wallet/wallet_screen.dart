@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import '../auth/login_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class WalletScreen extends StatefulWidget {
   final String token;
@@ -48,6 +50,12 @@ class _WalletScreenState extends State<WalletScreen> {
     }
   }
 
+  Future<void> _logout() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+    Navigator.pushReplacementNamed(context, '/login');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +69,6 @@ class _WalletScreenState extends State<WalletScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-
                       // Saldo
                       SizedBox(height: 8),
                       Text(
@@ -149,6 +156,28 @@ class _WalletScreenState extends State<WalletScreen> {
                             ),
                             child: Text(
                               'Copy Alamat Dompet',
+                              style: TextStyle(color: Colors.white), // Teks putih
+                            ),
+                          ),
+                          SizedBox(height: 16),
+                          ElevatedButton(
+                            onPressed: () {
+                              _logout();
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => LoginScreen()),
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red, // Warna tombol Login
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(100), // Sudut bulat
+                              ),
+                              minimumSize: Size(100, 50), // Ukuran minimal (lebar x tinggi)
+                              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24), // Padding tombol
+                            ),
+                            child: Text(
+                              'Logout',
                               style: TextStyle(color: Colors.white), // Teks putih
                             ),
                           ),

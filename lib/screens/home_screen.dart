@@ -25,9 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     _pages = [
       CourseScreen(token: widget.token),
-      WalletScreen(token: widget.token),
       CryptoScreen(),
       CryptoNewsScreen(),
+      WalletScreen(token: widget.token),
     ];
   }
 
@@ -69,16 +69,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 text: 'Kursus',
               ),
               GButton(
-                icon: Icons.account_balance_wallet,
-                text: 'Dompet',
-              ),
-              GButton(
                 icon: Icons.attach_money,
                 text: 'Koin',
               ),
               GButton(
                 icon: Icons.newspaper,
                 text: 'Berita',
+              ),
+              GButton(
+                icon: Icons.account_balance_wallet,
+                text: 'Dompet',
               ),
             ],
           ),
