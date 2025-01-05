@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 class ApiService {
   final Dio _dio = Dio(
     BaseOptions(
-      baseUrl: 'http://localhost:3100', // URL Proxy Node.js
+      baseUrl: 'http://localhost:3100',
       connectTimeout: const Duration(seconds: 10),
       receiveTimeout: const Duration(seconds: 10),
     ),
@@ -25,7 +25,7 @@ class ApiService {
   Future<List<dynamic>> fetchCryptoNews() async {
     try {
       final response = await _dio.get('/api/news');
-      return response.data['articles']; // NewsAPI returns articles in "articles" key
+      return response.data['articles'];
     } on DioException catch (e) {
       print('Error: ${e.response?.data ?? e.message}');
       return [];

@@ -4,6 +4,7 @@ import './course/course_screen.dart';
 import './news/news_screen.dart';
 import './wallet/wallet_screen.dart';
 import './crypto/crypto_screen.dart';
+import './auth/login_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final String token;
@@ -17,7 +18,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
 
-  // Daftar halaman untuk setiap tab
   late List<Widget> _pages;
 
   @override
@@ -37,32 +37,55 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  void _logout() {
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+      (route) => false,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
         title: Text(
           'Edukasi Crypto',
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: Colors.transparent,
-        elevation: 0, // Menghilangkan shadow
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(
+            'assets/logo.png',
+            width: 40,
+            height: 40,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.logout, color: Colors.white),
+            onPressed: _logout,
+          ),
+        ],
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: Container(
-        color: Colors.black, // Latar belakang navigasi
+        color: Colors.black,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
           child: GNav(
             backgroundColor: Colors.black,
-            color: Colors.white.withOpacity(0.5), // Warna ikon tidak aktif
-            activeColor: Colors.white, // Warna ikon aktif
-            tabBackgroundColor: Color(0xFF000080), // Latar belakang tab aktif
-            gap: 8, // Jarak antara ikon dan teks
-            padding: EdgeInsets.all(16), // Padding tab
+            color: Colors.white.withOpacity(0.5),
+            activeColor: Colors.white,
+            tabBackgroundColor: Color(0xFF000080),
+            gap: 8,
+            padding: EdgeInsets.all(16),
             selectedIndex: _selectedIndex,
-            onTabChange: _onItemTapped, // Ganti tab saat dipilih
+            onTabChange: _onItemTapped,
             tabs: [
               GButton(
                 icon: Icons.book,
