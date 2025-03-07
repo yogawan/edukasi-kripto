@@ -1,5 +1,9 @@
 # app
 
+Preview Application:
+
+![preview](preview.png)
+
 A new Flutter project.
 
 ## Getting Started
