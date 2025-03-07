@@ -2,6 +2,8 @@
 
 Preview Application:
 
+![thumb](thumb.png)
+
 ![preview](preview.png)
 
 A new Flutter project.
